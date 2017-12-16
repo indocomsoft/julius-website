@@ -1,0 +1,64 @@
+{{ partial "header.html" . }}
+
+<h1>{{ .Title }}</h1>
+
+{{ $page := .Page }}
+
+<main>
+  {{ .Content }}
+
+{{ if not .IsHome }}
+  {{ if eq (.Page.Dir) "blog/" }}
+    <p class="subtitle"><a href="/tags/">Click here</a> to sort by tags.</p>
+    <div class="content">
+      <ul>
+      {{ range (.Data.Pages) }}
+        <li>
+          <span class="title"><a href="{{ .URL }}">{{ .Title }}</a></span>
+          <span class="subtitle">{{ .Date.Format "02 Jan 06" }}</span>
+          <p class="summary">{{ .Summary }} <a href="{{ .URL }}">Read more</a></p>
+        </li>
+      {{ end }}
+      </ul>
+    </div>
+
+  {{ else }}
+    <p class="subtitle"><a href="/skilltags/">Click here</a> to sort by skills.</p>
+    {{ range (.Data.Pages.ByWeight) }}
+    <div class="content">
+      <div class="left">
+        {{ with .Params.img }}
+        <img src="{{ . }}" class="img-circle" />
+        {{ end }}
+      </div>
+      <div class="right">
+        <span class="title">
+        {{ if eq $page.Kind "taxonomy" }}
+          {{ if eq (.Dir) "experiences/" }}
+            <a href="/experiences">Experience:</a> 
+          {{ else }}
+            <a href="/projects/">Project:</a> 
+          {{ end }}
+        {{ end }}
+        {{ .Title }}</span><br />
+        {{ if isset .Params "position" }}
+        <span class="subtitle">{{ .Params.position }}</span>
+        {{ end }}
+        <span class="skilltags">
+          <span class="tags">
+          {{ range .Params.skilltags }}
+            <span class="tag">{{ . }}</span>
+          {{ end  }}
+          </span>
+        </span>
+        <div class="summary">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  {{ end }}
+{{ end }}
+</main>
+
+{{ partial "footer.html" . }}

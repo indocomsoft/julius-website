@@ -1,0 +1,40 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Julius' Personal Site"
+theme = "ics-personal"
+
+disableKinds = ["categories"]
+
+[categories]
+category = "categories"
+
+[taxonomies]
+  tag = "tags"
+  skilltag = "skilltags"
+
+[permalinks]
+  blog = "/blog/:year/:month/:day/:slug/"
+  projects = "404"
+  experiences = "404"
+  categories = "404"
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+[[menu.main]]
+  name = "Blog"
+  url = "/blog/"
+  weight = 2
+[[menu.main]]
+  name = "Projects"
+  url = "/projects/"
+  weight = 3
+[[menu.main]]
+  name = "Experience"
+  url = "/experiences/"
+  weight = 4
+
+[params]
+  description = "The personal website of Julius Putra Tanu Setiaji."
+  footer = "&copy; 2017 [Julius Putra Tanu Setiaji](https://indocomsoft.com) | [Github](https://github.com/indocomsoft)"

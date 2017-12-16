@@ -1,0 +1,13 @@
+{{ partial "header.html" . }}
+
+<h1 class="blogtitle">{{ .Title }}</h1>
+
+{{ if .Params.date }}<div class="date">Date: {{ .Date.Format "01 Jan 2006 15:04" }}</div>{{ end }}
+
+<main>
+  {{ .Content }}
+</main>
+
+<a href="{{.Site.BaseURL}}{{.Section}}">Back to {{.Section}}</a>
+
+{{ partial "footer.html" . }}
