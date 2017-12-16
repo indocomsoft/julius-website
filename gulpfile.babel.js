@@ -13,8 +13,8 @@ import webpackConfig from "./webpack.conf";
 const browserSync = BrowserSync.create();
 
 // Hugo arguments
-const hugoArgsDefault = ["-d", "../dist", "-s", "site", "-v"];
-const hugoArgsPreview = ["--buildDrafts", "--buildFuture"];
+const hugoArgsDefault = ["-d", "../dist", "-s", "site", "-v", "--preserveTaxonomyNames"];
+const hugoArgsPreview = ["--buildDrafts", "--buildFuture", "--preserveTaxonomyNames"];
 
 // Development tasks
 gulp.task("hugo", (cb) => buildSite(cb));
