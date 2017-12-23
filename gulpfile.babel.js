@@ -5,6 +5,7 @@ import gutil from "gulp-util";
 import postcss from "gulp-postcss";
 import cssImport from "postcss-import";
 import cssnext from "postcss-cssnext";
+import cleanCSS from "gulp-clean-css";
 import BrowserSync from "browser-sync";
 import watch from "gulp-watch";
 import webpack from "webpack";
@@ -25,9 +26,11 @@ gulp.task("build", ["css", "js"], (cb) => buildSite(cb, [], "production"));
 gulp.task("build-preview", ["css", "js"], (cb) => buildSite(cb, hugoArgsPreview, "production"));
 
 // Compile CSS with PostCSS
+
 gulp.task("css", () => (
   gulp.src("./src/css/*.css")
     .pipe(postcss([cssImport({from: "./src/css/main.css"}), cssnext()]))
+    .pipe(cleanCSS())
     .pipe(gulp.dest("./dist/css"))
     .pipe(browserSync.stream())
 ));
@@ -46,6 +49,8 @@ gulp.task("js", (cb) => {
     cb();
   });
 });
+
+
 
 // Development server with browsersync
 gulp.task("server", ["hugo", "css", "js"], () => {
