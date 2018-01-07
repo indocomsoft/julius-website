@@ -27,6 +27,22 @@ ul, ol {
   font-size: 80%;
 }
 
+img {
+  max-width: 100%;
+}
+
+img[src$='#small'] {
+  width: 200px;
+}
+
+img[src$='#medium'] {
+  width: 400px;
+}
+
+img[src$='#large'] {
+  width: 800px;
+}
+
 @media (min-width: 550px) {
   .content {
     display: table;
