@@ -1,7 +1,8 @@
 ---
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
 date: {{ .Date }}
-author: "Julius Putra Tanu Setiaji"
+position: Intern
+img:
 draft: true
 skilltags:
   - Skill 1
