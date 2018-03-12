@@ -43,6 +43,10 @@ img[src$='#large'] {
   width: 800px;
 }
 
+img[src$='#centre'] {
+  margin: 0.7rem auto;
+}
+
 @media (min-width: 550px) {
   .content {
     display: table;
@@ -152,4 +156,8 @@ pre code { background: none; }
 }
 .footnotes li {
   margin-bottom: 0.5em;
+}
+
+td {
+  vertical-align: top;
 }
