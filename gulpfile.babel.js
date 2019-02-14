@@ -80,6 +80,6 @@ const hugoArgsPreview = ["--buildDrafts", "--buildFuture"];
 
 
 // Build/production tasks
-gulp.task("build", gulp.parallel("css", "js"), (cb) => buildSite(cb, [], "production"));
-gulp.task("build-preview", gulp.parallel("css", "js"), (cb) => buildSite(cb, hugoArgsPreview, "production"));
+gulp.task("build", gulp.series(gulp.parallel("css", "js"), (cb) => buildSite(cb, [], "production")));
+gulp.task("build-preview", gulp.series(gulp.parallel("css", "js"), (cb) => buildSite(cb, hugoArgsPreview, "production")));
 
