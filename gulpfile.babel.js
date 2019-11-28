@@ -11,6 +11,8 @@ import watch from "gulp-watch";
 import webpack from "webpack";
 import webpackConfig from "./webpack.conf";
 
+const browserSync = BrowserSync.create();
+
 // Compile CSS with PostCSS
 
 gulp.task("css", () => (
@@ -40,16 +42,19 @@ gulp.task("js", (cb) => {
 gulp.task("hugo", (cb) => buildSite(cb));
 gulp.task("hugo-preview", (cb) => buildSite(cb, hugoArgsPreview));
 
-// Development server with browsersync
-gulp.task("server", gulp.parallel("hugo", "css", "js"), () => {
+gulp.task("browser-sync", () => {
   browserSync.init({
     server: {
       baseDir: "./dist"
     }
   });
-  watch("./src/js/**/*.js", () => { gulp.start(["js"]) });
-  watch("./src/css/**/*.css", () => { gulp.start(["css"]) });
-  watch("./site/**/*", () => { gulp.start(["hugo"]) });
+  gulp.watch("./src/js/**/*.js", gulp.series("js"));
+  gulp.watch("./src/css/**/*.css", gulp.series("css"));
+  gulp.watch("./site/**/*", gulp.series("hugo"));
+})
+
+// Development server with browsersync
+gulp.task("server", gulp.parallel("hugo", "css", "js", "browser-sync"), () => {
 });
 
 /**
@@ -71,7 +76,6 @@ function buildSite(cb, options, environment = "development") {
   });
 }
 
-const browserSync = BrowserSync.create();
 
 // Hugo arguments
 const hugoArgsDefault = ["-d", "../dist", "-s", "site", "-v"];
@@ -82,4 +86,3 @@ const hugoArgsPreview = ["--buildDrafts", "--buildFuture"];
 // Build/production tasks
 gulp.task("build", gulp.series(gulp.parallel("css", "js"), (cb) => buildSite(cb, [], "production")));
 gulp.task("build-preview", gulp.series(gulp.parallel("css", "js"), (cb) => buildSite(cb, hugoArgsPreview, "production")));
-
