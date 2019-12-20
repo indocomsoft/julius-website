@@ -33,13 +33,38 @@ I'll go into more details after this listing:
 - **Ruby**: Whenever I have to write quick scripts, like parsing the results of the fuzzy testing in CS4223.
 
 # Erlang/OTP -- Fix `file:allocate/3` "broken" behaviour
+You can find more context at the following links:
+- https://github.com/erlang/otp/pull/2386 and https://bugs.erlang.org/browse/ERL-1042
+- https://github.com/erlang/otp/pull/2408 and https://bugs.erlang.org/browse/ERL-1056
 
 # Hacker Tools
+Modelled after https://missing.csail.mit.edu/
+
+You can find my slides at https://github.com/indocomsoft/hackertools-slides
 
 # CS3216: https://pinda.fun
+NUS School of Computing's Product Development course, where my team managed to win the Category Winner.
+
+It's written in TypeScript using the React Framework, and Elixir using the Phoenix Framework.
+
+Read the source code at https://github.com/pinda-fun/pinda-fun/
 
 # CS4223: Tracing Simulator for MESI, MOESI, Dragon Cache Coherency Protocols
+Written in Scala, using the bazel build system.
+
+Read the source code at https://github.com/indocomsoft/cs4223-assignment-2
 
 # CS3243 Introduction to AI Assignments
+Written in Python, where I optimised the code using cProfile to get the bonus marks for performance.
+
+It's their fault to choose such a language as Python where using the wrong constructs can lead to slowdowns in your programme.
+
+Read the source code at the following links:
+- https://github.com/indocomsoft/cs3243-assignment-1
+- https://github.com/indocomsoft/cs3243-assignment-2
+- https://github.com/indocomsoft/cs3243-assignment-3
 
 # CS2104: Prolog Parser and Interpreter
+It was really annoying because we are given a useless lexer, but I guess I managed to implement a Prolog interpreter that supports the cut operator in Haskell.
+
+Read the source code at https://github.com/indocomsoft/cs2104-lab4
